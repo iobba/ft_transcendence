@@ -1,0 +1,44 @@
+.show-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-width: 300px;
+  min-height: 200px;
+  width: 400px; 
+  max-width: 500px;
+}
+
+.show-card::before {
+  content: '';
+  width: 50px;
+  height: 50px;
+  border-radius: 0 0 100% 0;
+  background: var(--bs-primary);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: 1s;
+}
+
+.show-card::after {
+  content: '';
+  width: 50px;
+  height: 50px;
+  border-radius: 100% 0 0 0;
+  background: var(--bs-primary);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  transition: 1s;
+}
+
+.show-card:hover::after,
+.show-card:hover::before {
+  opacity: 30%;
+  content: '';
+  width: 200%;
+  height: 200%;
+  border-radius: 0 0 0 0;
+}

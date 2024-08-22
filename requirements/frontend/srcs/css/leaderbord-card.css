@@ -1,0 +1,308 @@
+.leaderbord-card {
+  padding: 6px 12px;
+
+  margin: 0;
+  width: 98%;
+  min-width: 290px;
+  min-height: 60px;
+  display: grid;
+  grid-template-columns: auto 1fr 50px 100px;
+  grid-template-rows: 1fr;
+  gap: 5px;
+  text-decoration: none !important;
+  border: 1px solid var(--bs-primary);
+  border-radius: 6px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.leaderbord-card * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* z-index: 1; */
+}
+
+
+.leaderbord-card :before,
+.leaderbord-card :after {
+  content: '';
+  width: 100px;
+  height: 60px;
+  position: absolute;
+  background: var(--bs-primary);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.leaderbord-card ::before {
+  top: 0;
+  left: 0;
+  translate: -50% -50%;
+}
+
+.leaderbord-card ::after {
+  right: 0;
+  bottom: 0;
+  translate: 50% 50%;
+}
+
+
+/* poduim */
+
+.leaderboard-leaders {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LeaderboardPodium {
+  display: flex;
+  gap: .25rem;
+  align-items: flex-end;
+  justify-content: center;
+  perspective: 600px;
+  width: 100%;
+  padding: 12rem 5rem 2rem;
+  background: transparent;
+  font-size: 100%;
+  transition: .5s ease;
+  font-weight: 500;
+  position: relative;
+}
+
+.LeaderboardPodium div {
+  transform-style: preserve-3d;
+}
+
+.LeaderboardPodium::after {
+  content: "";
+  position: absolute;
+  width: calc(80%);
+  bottom: -6.75rem;
+  left: 10%;
+  right: 10%;
+  height: 160px;
+  transform-origin: top center;
+  transform: rotateX(60deg);
+  background: linear-gradient(180deg, rgb(var(--bs-primary-rgb)) 0, rgba(var(--bs-primary-rgb), 0) 100%);
+  opacity: .5;
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+/* leader */
+.leader {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leader:has([data-rank='1']) {
+  z-index: 1;
+}
+
+.leader:has([data-rank='2']) {
+  order: -1;
+}
+
+.leader [data-rank='1'] span {
+  font-size: 11rem;
+}
+
+.leader__info {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  width: max-content;
+  transform: translateZ(1.5rem);
+}
+
+.leader__info .leader__info__1 {
+  transform: translateY(20px);
+}
+
+.avatar-link__probadge-wrap {
+  position: absolute;
+  bottom: -4px;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.leader-avatar {
+  position: relative;
+}
+
+.LeaderboardPodium_cub {
+  --w: clamp(0px, 22vw, 300px);
+  --b: 12em;
+  --h: 9em;
+  --rx: -40deg;
+  --ry: 5deg;
+  position: absolute;
+  display: inline-flex;
+  position: relative;
+  width: var(--w);
+  height: var(--h)
+}
+
+.LeaderboardPodium_cubLarge {
+  --w: clamp(0px, 24vw, 400px);
+  --h: 220px
+}
+
+
+.LeaderboardPodium_face {
+  position: absolute;
+  overflow: hidden;
+  transform-origin: 0 0;
+  backface-visibility: hidden
+}
+
+.LeaderboardPodium_ft {
+  background: linear-gradient(180deg, rgb(var(--bs-primary-rgb)) 0, rgba(var(--bs-primary-rgb), 0) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8rem;
+  color: var(--podium-text-color);
+  font-family: ClashGrotesk;
+  font-weight: 700;
+  position: relative;
+}
+
+.LeaderboardPodium_ft:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(167.5% 203.72% at 48.5% -21.62%, rgb(var(--podium-rgb-1)) 0, rgba(var(--bs-primary-rgb), .5) 100%);
+  opacity: .6;
+  z-index: -1;
+}
+
+.LeaderboardPodium_cub[data-rank="2"] .LeaderboardPodium_ft {
+  border-image: linear-gradient(-155deg, hsla(0, 0%, 100%, .2), hsla(0, 0%, 100%, 0) 60%) 1;
+}
+
+.LeaderboardPodium_cub[data-rank="2"] .LeaderboardPodium_ft:after {
+  background: radial-gradient(55.72% 184.16% at 90.36% 0, rgb(var(--podium-rgb-1)) 0, rgba(var(--bs-primary-rgb), .5) 100%);
+}
+
+.LeaderboardPodium_cub[data-index="3"] .LeaderboardPodium_ft {
+  border-image: linear-gradient(155deg, hsla(0, 0%, 100%, .2), hsla(0, 0%, 100%, 0) 60%) 1;
+}
+
+.LeaderboardPodium_cub[data-index="3"] .LeaderboardPodium_ft:after {
+  background: radial-gradient(52.54% 176.81% at 10.65% 3%, rgb(var(--podium-rgb-1)) 0, rgba(var(--bs-primary-rgb), .5) 100%);
+}
+
+.LeaderboardPodium_bk,
+.LeaderboardPodium_ft {
+  width: 100%;
+  height: 100%;
+}
+
+.LeaderboardPodium_lt,
+.LeaderboardPodium_rt {
+  width: var(--b);
+  height: var(--h);
+}
+
+.LeaderboardPodium_bm,
+.LeaderboardPodium_tp {
+  width: var(--w);
+  height: var(--b);
+}
+
+
+.LeaderboardPodium_bk,
+.LeaderboardPodium_ft,
+.LeaderboardPodium_lt,
+.LeaderboardPodium_rt,
+.LeaderboardPodium_bm,
+.LeaderboardPodium_tp {
+  backface-visibility: hidden;
+}
+
+.LeaderboardPodium_bk {
+  left: 100%;
+  transform: translateZ(calc(var(--b) * -1)) rotateY(180deg)
+}
+
+
+.LeaderboardPodium_rt {
+  left: 100%;
+  background: linear-gradient(130deg, rgb(var(--bs-primary-rgb)) 0, rgba(var(--bs-primary-rgb), 0) 40%);
+  transform: translateZ(calc(var(--b) * -.5)) rotateY(90deg) translateX(-50%)
+}
+
+.LeaderboardPodium_lt {
+  background: linear-gradient(-130deg, rgb(var(--bs-primary-rgb)) 0, rgba(var(--bs-primary-rgb), 0) 40%);
+  transform: translateZ(calc(var(--b) * -.5)) rotateY(-90deg) translateX(-50%);
+}
+
+.LeaderboardPodium_tp {
+  transform: translateZ(calc(var(--b) * -.5)) rotateX(90deg) translateY(-50%);
+  background: linear-gradient(0deg, rgb(var(--bs-primary-rgb)) 0, rgba(var(--bs-primary-rgb), 0) 70%)
+}
+
+.LeaderboardPodium_bm {
+  top: 100%;
+  transform: translateZ(calc(var(--b) * -.5)) rotateX(-90deg) translateY(-50%)
+}
+
+.LeaderboardPodium_cub[data-rank="1"] {
+  transform: rotateX(var(--rx)) translateY(24px)
+}
+
+.LeaderboardPodium_cub[data-rank="2"],
+.LeaderboardPodium_cub[data-rank="3"] {
+  transform: rotateX(var(--rx))
+}
+
+.LeaderboardPodium_cub {
+  transition: transform .125s ease
+}
+
+
+/* on hover move the cub */
+/* 
+.LeaderboardPodium_cub[data-rank="1"]:hover {
+  transform:rotateX(var(--rx)) translateY(24px) translateZ(-16px)
+}
+
+.LeaderboardPodium_cub[data-rank="2"]:hover,
+.LeaderboardPodium_cub[data-rank="3"]:hover {
+  transform:rotateX(var(--rx)) translateZ(-16px)
+} */
+
+
+
+/* crown color */
+
+/*
+
+  --clr-gold-crown: #ffdf00;
+  --clr-silver-crown: silver;
+  --clr-bronze-crown: #cd7f32;
+
+*/
+
+
+.leader__info__1 {
+  --clr-crown: #ffdf00;
+}
+
+.leader__info__2 {
+  --clr-crown: silver;
+}
+
+.leader__info__3 {
+  --clr-crown: #cd7f32;
+}

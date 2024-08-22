@@ -1,0 +1,27 @@
+.my-graph {
+	display: flex;
+	/* justify-content: space-around; */
+	gap: 7px;
+	align-items: flex-end;
+	height: 300px;
+	width: 100%;
+	/* background-color: #f2f2f2; */
+	padding: 10px;
+}
+
+.bar {
+	width: 9%;
+	background-color: #007bff;
+	/* border-radius: 51% 49% 70% 30% / 100% 100% 0% 0% ; */
+	border-radius: 5px;
+	position: relative;
+	/* gap: 12px; */
+	/* margin: -16px; */
+	/* border: 3px black solid; */
+	/* border-bottom-left-radius: 0px; */
+	/* border-bottom-right-radius: 0px; */
+	/* border-bottom: none; */
+	/* border-right: none; */
+	/* box-sizing: border-box; */
+	/* background: transparent !important; */
+}

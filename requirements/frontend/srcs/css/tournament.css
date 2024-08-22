@@ -1,0 +1,28 @@
+.team {
+    background: rgb(var(--bs-primary-rgb), 0.8);
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .round {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    border: solid var(--bs-primary) 2px;
+    min-width: 300px;
+  }
+  .round-title {
+    font-weight: bolder;
+    font-size: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .round-data {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    border: solid var(--bs-primary) 2px;
+    min-width: 300px;
+  }

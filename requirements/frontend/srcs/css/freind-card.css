@@ -1,0 +1,128 @@
+
+
+.freind-card {
+  cursor: pointer;
+  transform: scale(0.97);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 1fr 1fr;
+  transition: 0.3s;
+}
+
+.freind-card:hover {
+  box-shadow: 0 0 3px 0 white;
+  transform: scale(0.99);
+}
+
+.freind-card:hover + .freind-card ,
+.freind-card:has( + .freind-card:hover) {
+  box-shadow: 0 0 2px 0 white;
+  transform: scale(0.98);
+  transition: 0.5s;
+}
+
+.freind-card .card-title,
+.freind-card .card-score,
+.freind-card .card-text
+{
+  display: flex;
+  align-items: center;
+}
+
+.freind-card img {
+  max-width: 100px;
+  max-height: 100px; 
+  min-width: 100px;
+  min-height: 100px;
+  grid-row: 1 / -1;
+}
+
+.freind-card .card-title {
+  /* align-self: flex-end; */
+  grid-column-start: 2;
+}
+
+.freind-card .card-text {
+  align-self: flex-start;
+  grid-column-start: 2;
+}
+
+.freind-card .card-score {
+  order: 1;
+  max-width: 100px;
+  max-height: 100px; 
+  min-width: 100px;
+  min-height: 100px;
+  justify-content: center;
+  grid-row: 1 / -1;
+  grid-column: 3 / -1;
+}
+
+
+
+
+@media (max-width: 800px) {
+  /*
+  .freind-card * {
+    text-overflow: ellipsis;
+    justify-content: center;
+  }
+
+  .freind-card {
+    padding: 10px 5px;
+    transform: scale(0.97);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 0.5fr 0.5fr;
+    transition: 0.3s;
+  }
+
+  .freind-card .card-title {
+    grid-row: 1 / 2;
+  }
+
+  .freind-card .card-score  {
+    background: red ;
+    grid-row: 3 / -1;
+    grid-column: 1 / -1;
+    max-width: auto;
+    max-height: auto; 
+    min-width: auto;
+    min-height: auto;
+    
+  }
+  */
+
+  /* .freind-card .card-title { */
+  /*   grid-row: 1 / -1; */
+  /* } */
+  
+  .freind-card .card-score  {
+    display: none;
+    /* /* background: red ; */ */
+    /* /* grid-row: 4 / -1; */ */
+    /* grid-column: 1 / -1; */
+    /* max-width: auto; */
+    /* max-height: auto;  */
+    /* min-width: auto; */
+    /* min-height: auto; */
+    
+  }
+  
+  .freind-card img {
+    display: none;
+    /* max-width: 150px; */
+    /* max-height: 150px;  */
+    /* min-width: 150px; */
+    /* min-height: 150px; */
+    /* grid-row: 1 / -1; */
+  }
+  
+  .freind-card *
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+

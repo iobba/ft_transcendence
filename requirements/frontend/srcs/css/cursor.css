@@ -1,0 +1,22 @@
+
+.cursor {
+  z-index: 1000000;
+  position: fixed;
+  background: var(--bs-primary);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 10px #2696E8, 0 0 30px #2696E8, 0 0 50px #2696E8;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+
+@media (max-width: 400px) {
+.cursor {
+  z-index: -100;
+}
+
+}
+

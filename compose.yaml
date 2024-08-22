@@ -1,0 +1,210 @@
+name: ft
+
+services:
+  nginx-alpine:
+    image: nginx-alpine
+    container_name: nginx-alpine
+    pull_policy: never
+    build:
+        context: ./requirements/frontend/
+        args:
+          - AUTH_URL=${AUTH_URL}
+    ports:
+      - 8080:443 
+    tty: true
+    stdin_open: true
+    init: true
+    networks:
+      - pong
+    env_file:
+      - .env
+    restart: on-failure
+    depends_on:
+      - gameback
+      - useractivity
+      - users
+      - matches
+    # volumes:
+    #   - ./requirements/frontend/srcs/:/var/www/pingpong
+
+  # game backend
+  gameback:
+    container_name: gameBack
+    build:
+      context: ./requirements/gameBack/
+    # ports:
+    #   - "9000:9000"
+    networks:
+      - pong
+    # volumes:
+    #   - ./requirements/gameBack:/code
+    depends_on:
+      - redis
+      - users
+      - matches
+    restart: on-failure
+
+
+  # redis
+  redis:
+    container_name: redis
+    image: redis:5
+    # ports:
+    #   - "6379:6379"
+    networks:
+      - pong
+    restart: on-failure
+
+  useractivity:
+    container_name: useractivity
+    build:
+      context: ./requirements/userState/
+    # ports:
+    #   - "5000:5000"
+    # volumes:
+    #   - ./requirements/userState:/code
+    networks:
+      - pong
+    depends_on:
+      - users
+    restart: on-failure
+
+  users:
+    container_name: users
+    build:
+      context: ./requirements/users/
+      args:
+        - DATABASE_HOST=${U_DB_HOST}
+        - DATABASE_NAME=${U_DB_NAME}
+        - DATABASE_USER=${U_DB_USER}
+        - DATABASE_PASSWORD=${U_DB_PASSWORD}
+    environment:
+      - DATABASE_HOST=${U_DB_HOST}
+      - DATABASE_NAME=${U_DB_NAME}
+      - DATABASE_USER=${U_DB_USER}
+      - DATABASE_PASSWORD=${U_DB_PASSWORD}
+    image: users
+    depends_on:
+      - kafka
+      - users_db
+    # ports:
+    #   - "8001:8000"  # Map port 8000 inside the container to port 8001 on the host
+    env_file:
+      - .env
+    networks:
+      - pong
+    restart: on-failure
+    # volumes:
+    #   - ./requirements/users/:/code
+
+  # users database
+  users_db:
+    image: postgres:latest
+    container_name: users_db
+    environment:
+      - POSTGRES_PASSWORD=${U_DB_PASSWORD}
+    networks:
+      - pong
+    # ports:
+    #   - "5433:5432"
+    volumes:
+      - postgres-users-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    restart: on-failure
+
+  # matches service
+  matches:
+    container_name: matches
+    build:
+      context: ./requirements/matches/
+      args:
+        - DATABASE_HOST=${M_DB_HOST}
+        - DATABASE_NAME=${M_DB_NAME}
+        - DATABASE_USER=${M_DB_USER}
+        - DATABASE_PASSWORD=${M_DB_PASSWORD}
+    environment:
+      - DATABASE_HOST=${M_DB_HOST}
+      - DATABASE_NAME=${M_DB_NAME}
+      - DATABASE_USER=${M_DB_USER}
+      - DATABASE_PASSWORD=${M_DB_PASSWORD}
+    image: matches
+    depends_on:
+      - kafka
+      - matches_db
+    # ports:
+    #   - "8002:8000"
+    env_file:
+      - .env
+    networks:
+      - pong
+    restart: on-failure
+    # volumes:
+    #   - ./requirements/matches/:/code
+
+  # matches database
+  matches_db:
+    image: postgres:latest
+    container_name: matches_db
+    environment:
+      - POSTGRES_PASSWORD=${M_DB_PASSWORD}
+    networks:
+      - pong
+    # ports:
+    #   - "5434:5432"
+    volumes:
+      - postgres-matches-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    restart: on-failure
+
+  # Kafka service
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    # ports:
+    #   - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+      - pong
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+    restart: on-failure
+
+
+  # ZooKeeper service
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    # ports:
+    #   - "2181:2181"
+    networks:
+      - pong 
+    restart: on-failure
+
+networks:
+  pong:
+    name: pong
+
+volumes:
+  postgres-users-data:
+  postgres-matches-data:
+  kafka-data:
+
+
+# volumes:
+#   front-code:
+#     name: front-code
+#     driver: local
+#     driver_opts:
+#       o: bind
+#       type: none
+#       device: ./front/

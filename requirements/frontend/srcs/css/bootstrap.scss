@@ -1,0 +1,10 @@
+$primary: #4e54c8;
+
+@font-face {
+  font-family: 'fonarto'; /* Name your font family */
+  src: url('/fonts/fonarto.regular.ttf'); /* Locate the .ttf file within your directory*/
+}
+
+$font-family-sans-serif: "fonarto", sans-serif;
+
+@import "../node_modules/bootstrap/scss/bootstrap";

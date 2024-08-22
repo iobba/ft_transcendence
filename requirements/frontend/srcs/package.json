@@ -1,0 +1,16 @@
+{
+  "name": "newpong",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nginx -g 'daemon off;'"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "three": "^0.167.1"
+  }
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<!-- <html lang="en"> -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Ping Pong</title>
+    <!-- my css file -->
+		<link href="/css/main.css" rel="stylesheet" />
+	</head>
+	<body>
+		<!-- render all the html you will need using js -->
+		<div id='render-box' class="render-box d-flex justify-content-center align-items-center">
+
+      <svg class="ping-pong" viewBox="0 0 128 128" width="128px" height="128px">
+        <defs>
+          <linearGradient id="ping-pong-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#000" />
+            <stop offset="100%" stop-color="#fff" />
+          </linearGradient>
+          <mask id="ping-pong-mask">
+            <rect x="0" y="0" width="128" height="128" fill="url(#ping-pong-grad)" />
+          </mask>
+        </defs>
+        <g fill="var(--primary)">
+          <g class="ping-pong__ball-x">
+            <circle class="ping-pong__ball-y" r="10" />
+          </g>
+          <g class="ping-pong__paddle-x">
+            <rect class="ping-pong__paddle-y" x="-30" y="-2" rx="1" ry="1" width="60" height="4" />
+          </g>
+        </g>
+        <g fill="hsl(163,90%,40%)" mask="url(#ping-pong-mask)">
+          <g class="ping-pong__ball-x">
+            <circle class="ping-pong__ball-y" r="10" />
+          </g>
+          <g class="ping-pong__paddle-x">
+            <rect class="ping-pong__paddle-y" x="-30" y="-2" rx="1" ry="1" width="60" height="4" />
+          </g>
+        </g>
+      </svg>
+
+		</div>
+		
+		<!-- cursor styling -->
+		<div id="cursor" class="cursor"></div>
+
+    <!-- alert box -->
+    <div id="liveAlertPlaceholder" class="alert-box" style="z-index:100000"></div>
+
+		<div class="area" >
+			<ul class="circles">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>	
+			</ul>
+		</div>
+	
+	</body>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "/node_modules/three/build/three.module.js",
+                "OrbitControls": "/node_modules/three/examples/jsm/controls/OrbitControls.js",
+                "TextGeometry": "/node_modules/three/examples/jsm/geometries/TextGeometry.js",
+                "FontLoader": "/node_modules/three/examples/jsm/loaders/FontLoader.js",
+                "OBJLoader": "/node_modules/three/examples/jsm/loaders/OBJLoader.js",
+                "GLTFLoader": "/node_modules/three/examples/jsm/loaders/GLTFLoader.js"
+            }
+        }
+    </script>
+	<!-- Bootstrap JS -->
+	<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+	<!-- my js file -->
+	<script src="js/index.js" type="module" defer></script>
+
+
+</html>

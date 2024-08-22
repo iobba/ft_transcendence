@@ -1,0 +1,16 @@
+Django==5.0                # a high-level Python Web framework.
+graphene-django==3.0       # Graphene-Django integrates GraphQL support into Django projects.
+django-graphql-jwt         # a library that integrates JSON Web Tokens (JWT) authentication with Django and Graphene.
+psycopg2-binary==2.9.1     # Psycopg2 is the most popular PostgreSQL database adapter for Python. It provides efficient and easy-to-use access to PostgreSQL databases.
+django-environ==0.10.0     # It simplifies the process of setting up environment-specific configurations.
+whitenoise==5.3.0          # a tool for serving static files directly from Django without needing a separate web server.
+psycopg2                   # Database adapter for PostgreSQL
+python-dotenv              # loads environment variables from a `.env` file into the environment.
+gunicorn                   # Production web server WSGI application server
+Pillow                     # used for image manipulation and processing, such as resizing images, cropping, and applying filters.
+requests                   # used for making external API calls, interacting with web services, or fetching resources from the internet.
+django-cors-headers        # Django CORS Headers is a middleware that adds Cross-Origin Resource Sharing (CORS) headers to responses. It's essential for handling cross-origin requests in a Django application, enabling communication between your frontend and backend running on different origins.
+PyJWT                      # a Python library that implements JSON Web Token (JWT) encoding, decoding, and verification.
+qrcode                     # a Python library for generating QR codes. It's useful for creating quick response codes that can store URLs, text, or other data.
+pyotp                      # a Python implementation of One-Time Password algorithms. It supports generating and verifying OTPs, which are temporary passwords that expire after a short period.
+kafka-python               # a modern, high-level producer and consumer library for Apache Kafka written in Python.

@@ -1,0 +1,23 @@
+
+.rotate-img {
+  animation-name: rotate-img;
+  animation-duration: 35s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  min-width: 400vw;
+  min-height: 400vh;
+  background-image: url('/img/blackhole.jpg');
+  /* background-color: transparent; */
+  /* border-radius: 15rem; */
+  /* background-image: url('<svg class="w-full h-full" viewBox="0 0 400 400"><defs><pattern id="bg_pattern" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="20" stroke="#3D348B" stroke-width="6" fill="none"></circle> <circle cx="22" cy="20" r="10" fill="#7678ED"></circle> <circle cx="25" cy="75" r="20" stroke="#7678ED" stroke-width="6" fill="none"></circle> <circle cx="22" cy="78" r="10" fill="#3D348B"></circle>   <circle cx="75" cy="25" r="20" stroke="#7678ED" stroke-width="6" fill="none"></circle> <circle cx="80" cy="26" r="10" fill="#3D348B"></circle> <circle cx="75" cy="75" r="20" stroke="#3D348B" stroke-width="6" fill="none"></circle> <circle cx="80" cy="78" r="10" fill="#7678ED"></circle></pattern></defs><rect x="0" y="0" width="100%" height="100%" fill="#f9f9ff"></rect><rect x="0" y="0" width="100%" height="100%" fill="url(#bg_pattern)"></rect></svg>'); */
+}
+
+@keyframes rotate-img {
+  from {
+    rotate: 0turn;
+  }
+
+  to {
+    rotate: 1turn;
+  }
+}

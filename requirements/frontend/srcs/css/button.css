@@ -1,0 +1,97 @@
+/* *{ */
+/*     padding:0; */
+/*     margin:0; */
+/* } */
+/* { */
+/*     height:100vh; */
+/*     display:flex; */
+/*     justify-content:center; */
+/*     align-items:center; */
+/*     background-color:#000; */
+/* } */
+.btn {
+  min-height: 40px !important;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--bs-body-color);
+}
+
+.btn-primary {
+  color: var(--bs-body-color);
+  background-color: transparent;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: var(--bs-primary) 1px solid;
+}
+
+.btn-primary:hover:before {
+  position: absolute;
+  content: '';
+  border-radius: 1px;
+  height: 400%;
+  width: 400%;
+  top: 0;
+  left: 0;
+
+}
+
+.btn-primary:before {
+  position: absolute;
+  content: '';
+  border-radius: 30% 70% 70% 30% / 30% 22% 78% 70%;
+  background-color: var(--bs-primary);
+  height: 70px;
+  width: 80px;
+
+  top: 0;
+  left: 0;
+  translate: -60% -60%;
+  transition: all 1s;
+  z-index: -1;
+}
+
+
+
+.btn-outline-primary:hover {
+  background-color: transparent;
+  color: var(--bs-body-color);
+}
+
+.btn-outline-primary {
+  color: var(--bs-body-color);
+  background-color: transparent;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: var(--bs-primary) 1px solid;
+}
+
+.btn-outline-primary:hover:before {
+  position: absolute;
+  content: '';
+  border-radius: 1px;
+  height: 400%;
+  width: 400%;
+  top: 0;
+  left: 0;
+
+}
+
+.btn-outline-primary:before {
+  position: absolute;
+  content: '';
+  border-radius: 30% 70% 70% 30% / 30% 22% 78% 70%;
+  background-color: var(--bs-primary);
+  height: 0px;
+  width: 0px;
+  top: 0;
+  left: 0;
+  translate: -50% -50%;
+  transition: all 1s;
+  z-index: -1;
+}
