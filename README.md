@@ -1,4 +1,7 @@
 # ft_transcendence (PING PONG GAME)
+
+![](https://github.com/Your_Repository_Name/Your_GIF_Name.gif)
+
 ## Introduction
 This project revolves around developing a robust and scalable website for the mighty Pong contest. The tasks were divided among team members, focusing on three main areas: front-end, game development, and backend architecture. My role centered on the backend, where I implemented a microservices-based architecture to ensure flexibility and efficiency.
 
